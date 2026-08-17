@@ -55,3 +55,7 @@ export 'catalog/usecases/logic_pomodoro.dart';
 export 'catalog/usecases/logic_anagram.dart';
 export 'catalog/usecases/logic_math_trainer.dart';
 export 'catalog/usecases/logic_gravity.dart';
+export 'catalog/usecases/logic_tip_calculator.dart';
+export 'catalog/usecases/logic_bmi.dart';
+export 'catalog/usecases/logic_password_gen.dart';
+export 'catalog/usecases/logic_currency.dart';
