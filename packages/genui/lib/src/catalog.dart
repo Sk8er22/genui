@@ -59,3 +59,7 @@ export 'catalog/usecases/logic_tip_calculator.dart';
 export 'catalog/usecases/logic_bmi.dart';
 export 'catalog/usecases/logic_password_gen.dart';
 export 'catalog/usecases/logic_currency.dart';
+export 'catalog/usecases/logic_chess.dart';
+export 'catalog/usecases/logic_reversi.dart';
+export 'catalog/usecases/logic_snakes_ladders.dart';
+export 'catalog/usecases/logic_battleship.dart';
