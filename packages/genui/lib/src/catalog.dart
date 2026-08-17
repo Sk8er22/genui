@@ -28,3 +28,6 @@ export 'catalog/basic_catalog_widgets/text.dart';
 export 'catalog/basic_catalog_widgets/text_field.dart';
 export 'catalog/basic_catalog_widgets/widget_helpers.dart';
 export 'catalog/basic_functions.dart';
+export 'catalog/usecases/logic_gradient_colors.dart';
+export 'catalog/usecases/logic_handwriting.dart';
+export 'catalog/usecases/logic_piano.dart';
