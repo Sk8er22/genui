@@ -127,7 +127,7 @@ class _LogicStopwatchWidgetState extends State<LogicStopwatchWidget> {
             ),
             if (_laps.isNotEmpty) ...[
               const Divider(height: 24),
-              ..._laps.take(8).asMap().entries.map((e) => Padding(
+              ..._laps.take(8).toList().asMap().entries.map((e) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 2),
                     child: Row(
                       children: [
