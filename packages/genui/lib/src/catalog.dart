@@ -67,3 +67,7 @@ export 'catalog/usecases/logic_2048.dart';
 export 'catalog/usecases/logic_minesweeper.dart';
 export 'catalog/usecases/logic_simon.dart';
 export 'catalog/usecases/logic_tetris.dart';
+export 'catalog/usecases/logic_codebreaker.dart';
+export 'catalog/usecases/logic_reaction_time.dart';
+export 'catalog/usecases/logic_wheel_picker.dart';
+export 'catalog/usecases/logic_trivia.dart';
