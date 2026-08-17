@@ -51,3 +51,7 @@ export 'catalog/usecases/logic_wordle.dart';
 export 'catalog/usecases/logic_hangman.dart';
 export 'catalog/usecases/logic_connect4.dart';
 export 'catalog/usecases/logic_sudoku.dart';
+export 'catalog/usecases/logic_pomodoro.dart';
+export 'catalog/usecases/logic_anagram.dart';
+export 'catalog/usecases/logic_math_trainer.dart';
+export 'catalog/usecases/logic_gravity.dart';
