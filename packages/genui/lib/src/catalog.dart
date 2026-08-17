@@ -31,3 +31,7 @@ export 'catalog/basic_functions.dart';
 export 'catalog/usecases/logic_gradient_colors.dart';
 export 'catalog/usecases/logic_handwriting.dart';
 export 'catalog/usecases/logic_piano.dart';
+export 'catalog/usecases/logic_tarot.dart';
+export 'catalog/usecases/logic_birth_chart.dart';
+export 'catalog/usecases/logic_tic_tac_toe.dart';
+export 'catalog/usecases/logic_calculator.dart';
