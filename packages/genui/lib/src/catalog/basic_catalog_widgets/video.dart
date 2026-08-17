@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_schema_builder/json_schema_builder.dart';
 import 'package:video_player/video_player.dart' as vp;
+import 'package:video_player_media_kit/video_player_media_kit.dart' as vpmk;
 
 import '../../model/a2ui_schemas.dart';
 import '../../model/catalog_item.dart';
@@ -24,9 +25,22 @@ final _schema = S.object(
   required: ['url'],
 );
 
-// Linux is the only platform without video_player support.
-bool get _isVideoSupported =>
-    defaultTargetPlatform != TargetPlatform.linux || kIsWeb;
+/// Linux is the only platform without a native `video_player` platform
+/// implementation; this package ships a Media Kit (libmpv) backend for it,
+/// registered lazily and idempotently the first time a video is rendered.
+bool get _isVideoSupported => true;
+
+bool _linuxBackendRegistered = false;
+
+/// Registers the Media Kit `video_player` platform implementation on Linux
+/// so [vp.VideoPlayerController] can decode video there. No-op elsewhere and
+/// safe to call multiple times.
+void _ensureLinuxBackend() {
+  if (defaultTargetPlatform != TargetPlatform.linux || kIsWeb) return;
+  if (_linuxBackendRegistered) return;
+  _linuxBackendRegistered = true;
+  vpmk.VideoPlayerMediaKit.ensureInitialized(linux: true);
+}
 
 /// A video player.
 ///
@@ -76,12 +90,7 @@ class _VideoPlayerWidgetState extends State<_VideoPlayerWidget> {
   @override
   void initState() {
     super.initState();
-    if (!_isVideoSupported) {
-      genUiLogger.warning(
-        'Video playback is not supported on '
-        '${defaultTargetPlatform.name}.',
-      );
-    }
+    _ensureLinuxBackend();
     _initController();
   }
 
@@ -134,22 +143,6 @@ class _VideoPlayerWidgetState extends State<_VideoPlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_isVideoSupported) {
-      return const Card(
-        child: Padding(
-          padding: EdgeInsets.all(16),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.videocam_off),
-              SizedBox(width: 8),
-              Text('Video playback is not supported on this platform.'),
-            ],
-          ),
-        ),
-      );
-    }
-
     final vp.VideoPlayerController? controller = _controller;
 
     if (_hasError) {

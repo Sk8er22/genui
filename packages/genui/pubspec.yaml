@@ -31,6 +31,7 @@ dependencies:
   url_launcher: ^6.3.2
   uuid: ^4.4.0
   video_player: ^2.11.1
+  video_player_media_kit: ^2.0.0
   video_player_win: ^3.2.2
 
 dev_dependencies:

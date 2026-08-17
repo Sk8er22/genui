@@ -1,5 +1,11 @@
 # [genui](https://pub.dev/packages/genui) Changelog
 
+## 0.10.3-dev
+
+- Added Linux video support: the `Video` catalog widget now plays on Linux via
+  a Media Kit (libmpv) backend (`video_player_media_kit`), registered lazily
+  and idempotently on first render — no `main()` changes needed by consumers.
+
 ## 0.10.2
 
 - Fixed `A2uiTransportAdapter.incomingText` trimming every streamed chunk, which
