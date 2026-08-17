@@ -63,3 +63,7 @@ export 'catalog/usecases/logic_chess.dart';
 export 'catalog/usecases/logic_reversi.dart';
 export 'catalog/usecases/logic_snakes_ladders.dart';
 export 'catalog/usecases/logic_battleship.dart';
+export 'catalog/usecases/logic_2048.dart';
+export 'catalog/usecases/logic_minesweeper.dart';
+export 'catalog/usecases/logic_simon.dart';
+export 'catalog/usecases/logic_tetris.dart';
