@@ -85,3 +85,4 @@ export 'catalog/usecases/logic_password_meter.dart';
 export 'catalog/usecases/logic_sign_up.dart';
 export 'catalog/usecases/logic_tower_of_hanoi.dart';
 export 'catalog/usecases/logic_eight_queens.dart';
+export 'catalog/usecases/logic_typing_speed.dart';
