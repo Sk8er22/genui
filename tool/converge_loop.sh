@@ -32,6 +32,7 @@ echo "[loop] convergence loop start (max_cycles=$MAX)"
 echo "[loop] harness: $DSHBIN | repo: $GENUI"
 
 cycle=0
+FAILS=0
 while true; do
   cycle=$((cycle+1))
   if [ "$cycle" -gt "$MAX" ]; then
@@ -93,14 +94,21 @@ PROMPTEOF
     E2E_RESULT=$([ "$E2E_RC" -eq 0 ] && echo "pass" || echo "FAIL")
   fi
 
-  # --- gate: red on analyze/test -> abort this cycle's commit ---
+  # --- gate: red on analyze/test -> revert this cycle's work, mark a failure ---
   if [ "$AN_ERR" -ne 0 ] || [ "$TEST_RC" -ne 0 ]; then
-    echo "[loop] VERIFY FAILED (analyze=$AN_ERR test_rc=$TEST_RC) -> revert + stop"
+    echo "[loop] VERIFY FAILED (analyze=$AN_ERR test_rc=$TEST_RC) -> revert this cycle"
     git -C "$GENUI" checkout -- . 2>/dev/null
     git -C "$GENUI" clean -fd \
       packages/genui/lib/src/catalog/usecases \
       packages/genui/test/usecases 2>/dev/null
-    break
+    FAILS=$((FAILS+1))
+    if [ "$FAILS" -ge "${MAX_FAILS:-3}" ]; then
+      echo "[loop] STOP — $FAILS consecutive verification failures (model can't land green code)"
+      break
+    fi
+    echo "[loop] reverted (failure $FAILS/$MAX_FAILS trying again next cycle)..."
+    # skip the hooks below; go straight to the next cycle
+    continue
   fi
 
   # --- commit + push if changes ---
