@@ -66,6 +66,7 @@ import 'usecases/logic_password_meter.dart' as LogicPasswordMeter;
 import 'usecases/logic_otp.dart' as LogicOtp;
 import 'usecases/logic_login.dart' as LogicLogin;
 import 'usecases/logic_password_gen.dart' as LogicPasswordGen;
+import 'usecases/logic_peg_solitaire.dart' as LogicPegSolitaire;
 import 'usecases/logic_piano.dart' as LogicPiano;
 import 'usecases/logic_poll_vote.dart' as LogicPollVote;
 import 'usecases/logic_pomodoro.dart' as LogicPomodoro;
@@ -231,6 +232,7 @@ abstract final class BasicCatalogItems {
     LogicNim.LogicNim.catalogItem,
     LogicNonogram.LogicNonogram.catalogItem,
     LogicPasswordGen.LogicPasswordGen.catalogItem,
+    LogicPegSolitaire.LogicPegSolitaire.catalogItem,
     LogicPiano.LogicPiano.catalogItem,
     LogicPollVote.LogicPollVote.catalogItem,
     LogicPomodoro.LogicPomodoro.catalogItem,
