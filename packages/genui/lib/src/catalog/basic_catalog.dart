@@ -76,6 +76,7 @@ import 'usecases/logic_reversi.dart' as LogicReversi;
 import 'usecases/logic_rps.dart' as LogicRps;
 import 'usecases/logic_simon.dart' as LogicSimon;
 import 'usecases/logic_snakes_ladders.dart' as LogicSnakesLadders;
+import 'usecases/logic_sokoban.dart' as LogicSokoban;
 import 'usecases/logic_stopwatch.dart' as LogicStopwatch;
 import 'usecases/logic_sudoku.dart' as LogicSudoku;
 import 'usecases/logic_tarot.dart' as LogicTarot;
@@ -242,6 +243,7 @@ abstract final class BasicCatalogItems {
     LogicRps.LogicRps.catalogItem,
     LogicSimon.LogicSimon.catalogItem,
     LogicSnakesLadders.LogicSnakesLadders.catalogItem,
+    LogicSokoban.LogicSokoban.catalogItem,
     LogicStopwatch.LogicStopwatch.catalogItem,
     LogicSudoku.LogicSudoku.catalogItem,
     LogicTarot.LogicTarot.catalogItem,
