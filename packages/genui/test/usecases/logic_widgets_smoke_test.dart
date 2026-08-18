@@ -21,6 +21,8 @@ import '../../lib/src/catalog/usecases/logic_snake.dart' as snake;
 import '../../lib/src/catalog/usecases/logic_poker.dart' as poker;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_roulette.dart' as roulette;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_pathfinding.dart' as pathfinding;
 
 void main() {
   group('LogicChess catalog registration', () {
@@ -171,6 +173,21 @@ void main() {
       final String json =
           roulette.LogicRoulette.catalogItem.exampleData.first();
       expect(json, contains('LogicRoulette'));
+      expect(json, contains('root'));
+    });
+  });
+
+  group('LogicPathfinding catalog registration', () {
+    test('name is LogicPathfinding and has a schema', () {
+      final item = pathfinding.LogicPathfinding.catalogItem;
+      expect(item.name, 'LogicPathfinding');
+      expect(item.dataSchema, isA<Schema>());
+    });
+
+    test('example JSON parses and includes a root component', () {
+      final String json =
+          pathfinding.LogicPathfinding.catalogItem.exampleData.first();
+      expect(json, contains('LogicPathfinding'));
       expect(json, contains('root'));
     });
   });

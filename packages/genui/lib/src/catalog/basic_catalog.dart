@@ -62,6 +62,7 @@ import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
 import 'usecases/logic_morse.dart' as LogicMorse;
 import 'usecases/logic_nim.dart' as LogicNim;
 import 'usecases/logic_nonogram.dart' as LogicNonogram;
+import 'usecases/logic_pathfinding.dart' as LogicPathfinding;
 import 'usecases/logic_sign_up.dart' as LogicSignUp;
 import 'usecases/logic_snake.dart' as LogicSnake;
 import 'usecases/logic_slots.dart' as LogicSlots;
@@ -241,6 +242,7 @@ abstract final class BasicCatalogItems {
     LogicMorse.LogicMorse.catalogItem,
     LogicNim.LogicNim.catalogItem,
     LogicNonogram.LogicNonogram.catalogItem,
+    LogicPathfinding.LogicPathfinding.catalogItem,
     LogicPasswordGen.LogicPasswordGen.catalogItem,
     LogicPegSolitaire.LogicPegSolitaire.catalogItem,
     LogicPiano.LogicPiano.catalogItem,

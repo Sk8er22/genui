@@ -17,6 +17,8 @@ import '../../lib/src/catalog/usecases/logic_reversi.dart' as reversi;
 import '../../lib/src/catalog/usecases/logic_expense_tracker.dart' as expenses;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_snake.dart' as snake;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_pathfinding.dart' as pathfinding;
 
 Future<void> pumpSized(WidgetTester tester, Widget child) async {
   await tester.pumpWidget(MaterialApp(
@@ -107,5 +109,26 @@ void main() {
     await tester.pump(const Duration(milliseconds: 250));
 
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('pathfinding BFS run animates and draws a route',
+      (tester) async {
+    await pumpSized(tester, pathfinding.LogicPathfindingWidget(title: 'pf'));
+    await tester.pump();
+
+    // Pick BFS (deterministic) and start the search. The seeded grid has a
+    // start, an end and a wall pattern, so a route must exist.
+    await tester.tap(find.text('BFS'));
+    await tester.pump();
+    await tester.tap(find.text('Run'));
+
+    // Step the periodic timer explicitly — never pumpAndSettle while running.
+    for (var i = 0; i < 120 &&
+        find.textContaining('Shortest path').evaluate().isEmpty; i++) {
+      await tester.pump(const Duration(milliseconds: 50));
+    }
+
+    expect(tester.takeException(), isNull);
+    expect(find.textContaining('Shortest path'), findsOneWidget);
   });
 }
