@@ -106,7 +106,7 @@ PROMPTEOF
       echo "[loop] STOP — $FAILS consecutive verification failures (model can't land green code)"
       break
     fi
-    echo "[loop] reverted (failure $FAILS/$MAX_FAILS trying again next cycle)..."
+    echo "[loop] reverted (failure $FAILS/${MAX_FAILS:-3} trying again next cycle)..."
     # skip the hooks below; go straight to the next cycle
     continue
   fi
