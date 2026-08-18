@@ -71,6 +71,7 @@ import 'usecases/logic_login.dart' as LogicLogin;
 import 'usecases/logic_password_gen.dart' as LogicPasswordGen;
 import 'usecases/logic_peg_solitaire.dart' as LogicPegSolitaire;
 import 'usecases/logic_piano.dart' as LogicPiano;
+import 'usecases/logic_poker.dart' as LogicPoker;
 import 'usecases/logic_poll_vote.dart' as LogicPollVote;
 import 'usecases/logic_pomodoro.dart' as LogicPomodoro;
 import 'usecases/logic_quiz_card.dart' as LogicQuizCard;
@@ -241,6 +242,7 @@ abstract final class BasicCatalogItems {
     LogicPasswordGen.LogicPasswordGen.catalogItem,
     LogicPegSolitaire.LogicPegSolitaire.catalogItem,
     LogicPiano.LogicPiano.catalogItem,
+    LogicPoker.LogicPoker.catalogItem,
     LogicPollVote.LogicPollVote.catalogItem,
     LogicPomodoro.LogicPomodoro.catalogItem,
     LogicQuizCard.LogicQuizCard.catalogItem,

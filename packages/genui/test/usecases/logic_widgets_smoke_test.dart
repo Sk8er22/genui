@@ -17,6 +17,8 @@ import '../../lib/src/catalog/usecases/logic_expense_tracker.dart' as expenses;
 import '../../lib/src/catalog/usecases/logic_calendar.dart' as calendar;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_snake.dart' as snake;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_poker.dart' as poker;
 
 void main() {
   group('LogicChess catalog registration', () {
@@ -76,6 +78,86 @@ void main() {
     });
   });
 
+  group('LogicPoker catalog registration', () {
+    test('name is LogicPoker and has a schema', () {
+      final item = poker.LogicPoker.catalogItem;
+      expect(item.name, 'LogicPoker');
+      expect(item.dataSchema, isA<Schema>());
+    });
+
+    test('example JSON parses and includes a root component', () {
+      final String json = poker.LogicPoker.catalogItem.exampleData.first();
+      expect(json, contains('LogicPoker'));
+      expect(json, contains('root'));
+    });
+  });
+
+  group('poker hand evaluation', () {
+    poker.LogicPokerCard c(String rank, String suit) =>
+        poker.LogicPokerCard(rank, suit);
+
+    test('royal flush is detected', () {
+      final cards = [
+        c('10', '♠'), c('J', '♠'), c('Q', '♠'), c('K', '♠'), c('A', '♠'),
+      ];
+      expect(poker.evaluatePokerHand(cards), poker.PokerHand.royalFlush);
+    });
+
+    test('straight flush beats four of a kind', () {
+      final straightFlush = [
+        c('5', '♥'), c('6', '♥'), c('7', '♥'), c('8', '♥'), c('9', '♥'),
+      ];
+      final four = [
+        c('9', '♠'), c('9', '♥'), c('9', '♦'), c('9', '♣'), c('2', '♠'),
+      ];
+      expect(
+        poker.evaluatePokerHand(straightFlush),
+        poker.PokerHand.straightFlush,
+      );
+      expect(poker.evaluatePokerHand(four), poker.PokerHand.fourOfAKind);
+    });
+
+    test('full house and flush are ranked correctly', () {
+      final fullHouse = [
+        c('K', '♠'), c('K', '♥'), c('K', '♦'), c('4', '♣'), c('4', '♠'),
+      ];
+      final flush = [
+        c('2', '♦'), c('5', '♦'), c('9', '♦'), c('J', '♦'), c('Q', '♦'),
+      ];
+      expect(poker.evaluatePokerHand(fullHouse), poker.PokerHand.fullHouse);
+      expect(poker.evaluatePokerHand(flush), poker.PokerHand.flush);
+    });
+
+    test('low ace wheel is a straight', () {
+      final wheel = [
+        c('A', '♠'), c('2', '♥'), c('3', '♦'), c('4', '♣'), c('5', '♠'),
+      ];
+      expect(poker.evaluatePokerHand(wheel), poker.PokerHand.straight);
+    });
+
+    test('jacks or better pays, lower pairs do not', () {
+      final jacks = [
+        c('J', '♠'), c('J', '♥'), c('3', '♦'), c('8', '♣'), c('Q', '♠'),
+      ];
+      final lowPair = [
+        c('6', '♠'), c('6', '♥'), c('3', '♦'), c('8', '♣'), c('Q', '♠'),
+      ];
+      expect(poker.evaluatePokerHand(jacks), poker.PokerHand.jacksOrBetter);
+      expect(poker.evaluatePokerHand(lowPair), poker.PokerHand.highCard);
+    });
+
+    test('two pair and three of a kind', () {
+      final twoPair = [
+        c('Q', '♠'), c('Q', '♥'), c('3', '♦'), c('3', '♣'), c('K', '♠'),
+      ];
+      final trips = [
+        c('7', '♠'), c('7', '♥'), c('7', '♦'), c('3', '♣'), c('K', '♠'),
+      ];
+      expect(poker.evaluatePokerHand(twoPair), poker.PokerHand.twoPair);
+      expect(poker.evaluatePokerHand(trips), poker.PokerHand.threeOfAKind);
+    });
+  });
+
   // Verify all exported usecase catalog items are reachable via the barrel.
   test('barrel exports logic chess widget type', () {
     // compile-time: ensures lib/src/catalog.dart re-export resolves
@@ -83,5 +165,7 @@ void main() {
     chess.LogicChess.catalogItem;
     // ignore: unnecessary_statements
     snake.LogicSnake.catalogItem;
+    // ignore: unnecessary_statements
+    poker.LogicPoker.catalogItem;
   });
 }
