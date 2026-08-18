@@ -68,6 +68,7 @@ import 'usecases/logic_tetris.dart' as LogicTetris;
 import 'usecases/logic_tic_tac_toe.dart' as LogicTicTacToe;
 import 'usecases/logic_times_table.dart' as LogicTimesTable;
 import 'usecases/logic_tip_calculator.dart' as LogicTipCalculator;
+import 'usecases/logic_tower_of_hanoi.dart' as LogicTowerOfHanoi;
 import 'usecases/logic_todo_list.dart' as LogicTodoList;
 import 'usecases/logic_trivia.dart' as LogicTrivia;
 import 'usecases/logic_unit_converter.dart' as LogicUnitConverter;
@@ -220,6 +221,7 @@ abstract final class BasicCatalogItems {
     LogicTicTacToe.LogicTicTacToe.catalogItem,
     LogicTimesTable.LogicTimesTable.catalogItem,
     LogicTipCalculator.LogicTipCalculator.catalogItem,
+    LogicTowerOfHanoi.LogicTowerOfHanoi.catalogItem,
     LogicTodoList.LogicTodoList.catalogItem,
     LogicTrivia.LogicTrivia.catalogItem,
     LogicUnitConverter.LogicUnitConverter.catalogItem,
