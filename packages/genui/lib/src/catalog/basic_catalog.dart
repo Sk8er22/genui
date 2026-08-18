@@ -46,6 +46,7 @@ import 'usecases/logic_gravity.dart' as LogicGravity;
 import 'usecases/logic_guess_number.dart' as LogicGuessNumber;
 import 'usecases/logic_handwriting.dart' as LogicHandwriting;
 import 'usecases/logic_hangman.dart' as LogicHangman;
+import 'usecases/logic_lights_out.dart' as LogicLightsOut;
 import 'usecases/logic_math_trainer.dart' as LogicMathTrainer;
 import 'usecases/logic_memory_game.dart' as LogicMemoryGame;
 import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
@@ -197,6 +198,7 @@ abstract final class BasicCatalogItems {
     LogicGuessNumber.LogicGuessNumber.catalogItem,
     LogicHandwriting.LogicHandwriting.catalogItem,
     LogicHangman.LogicHangman.catalogItem,
+    LogicLightsOut.LogicLightsOut.catalogItem,
     LogicMathTrainer.LogicMathTrainer.catalogItem,
     LogicMemoryGame.LogicMemoryGame.catalogItem,
     LogicMinesweeper.LogicMinesweeper.catalogItem,
