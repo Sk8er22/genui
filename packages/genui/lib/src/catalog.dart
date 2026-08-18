@@ -95,6 +95,7 @@ export 'catalog/usecases/logic_sign_up.dart';
 export 'catalog/usecases/logic_snake.dart';
 export 'catalog/usecases/logic_slots.dart';
 export 'catalog/usecases/logic_binary_converter.dart';
+export 'catalog/usecases/logic_bingo.dart';
 export 'catalog/usecases/logic_checkers.dart';
 export 'catalog/usecases/logic_yahtzee.dart';
 export 'catalog/usecases/logic_jigsaw.dart';

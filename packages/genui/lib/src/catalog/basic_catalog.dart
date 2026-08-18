@@ -28,6 +28,7 @@ import 'usecases/logic_2048.dart' as Logic2048;
 import 'usecases/logic_anagram.dart' as LogicAnagram;
 import 'usecases/logic_battleship.dart' as LogicBattleship;
 import 'usecases/logic_birth_chart.dart' as LogicBirthChart;
+import 'usecases/logic_bingo.dart' as LogicBingo;
 import 'usecases/logic_blackjack.dart' as LogicBlackjack;
 import 'usecases/logic_bmi.dart' as LogicBmi;
 import 'usecases/logic_calculator.dart' as LogicCalculator;
@@ -273,6 +274,7 @@ abstract final class BasicCatalogItems {
     LogicSlots.LogicSlots.catalogItem,
     LogicTypingSpeed.LogicTypingSpeed.catalogItem,
     LogicBinaryConverter.LogicBinaryConverter.catalogItem,
+    LogicBingo.LogicBingo.catalogItem,
     LogicCheckers.LogicCheckers.catalogItem,
     LogicJigsaw.LogicJigsaw.catalogItem,
     LogicYahtzee.LogicYahtzee.catalogItem,
