@@ -85,6 +85,7 @@ export 'catalog/usecases/logic_login.dart';
 export 'catalog/usecases/logic_otp.dart';
 export 'catalog/usecases/logic_password_meter.dart';
 export 'catalog/usecases/logic_sign_up.dart';
+export 'catalog/usecases/logic_slots.dart';
 export 'catalog/usecases/logic_binary_converter.dart';
 export 'catalog/usecases/logic_checkers.dart';
 export 'catalog/usecases/logic_yahtzee.dart';

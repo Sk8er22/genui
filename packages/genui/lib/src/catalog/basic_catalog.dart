@@ -57,6 +57,7 @@ import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
 import 'usecases/logic_morse.dart' as LogicMorse;
 import 'usecases/logic_nonogram.dart' as LogicNonogram;
 import 'usecases/logic_sign_up.dart' as LogicSignUp;
+import 'usecases/logic_slots.dart' as LogicSlots;
 import 'usecases/logic_typing_speed.dart' as LogicTypingSpeed;
 import 'usecases/logic_password_meter.dart' as LogicPasswordMeter;
 import 'usecases/logic_otp.dart' as LogicOtp;
@@ -250,6 +251,7 @@ abstract final class BasicCatalogItems {
     LogicOtp.LogicOtp.catalogItem,
     LogicPasswordMeter.LogicPasswordMeter.catalogItem,
     LogicSignUp.LogicSignUp.catalogItem,
+    LogicSlots.LogicSlots.catalogItem,
     LogicTypingSpeed.LogicTypingSpeed.catalogItem,
     LogicBinaryConverter.LogicBinaryConverter.catalogItem,
     LogicCheckers.LogicCheckers.catalogItem,

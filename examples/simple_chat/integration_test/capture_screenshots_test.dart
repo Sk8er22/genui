@@ -30,6 +30,14 @@ import '../../../packages/genui/lib/src/catalog/usecases/logic_otp.dart' as wotp
 import '../../../packages/genui/lib/src/catalog/usecases/logic_wordle.dart' as wwordle;
 // ignore: avoid_relative_lib_imports
 import '../../../packages/genui/lib/src/catalog/usecases/logic_sudoku.dart' as wsudoku;
+// ignore: avoid_relative_lib_imports
+import '../../../packages/genui/lib/src/catalog/usecases/logic_checkers.dart' as wcheckers;
+// ignore: avoid_relative_lib_imports
+import '../../../packages/genui/lib/src/catalog/usecases/logic_yahtzee.dart' as wyahtzee;
+// ignore: avoid_relative_lib_imports
+import '../../../packages/genui/lib/src/catalog/usecases/logic_jigsaw.dart' as wjigsaw;
+// ignore: avoid_relative_lib_imports
+import '../../../packages/genui/lib/src/catalog/usecases/logic_binary_converter.dart' as wbinary;
 
 Future<void> snap(WidgetTester tester, Widget child, String name) async {
   await tester.pumpWidget(MaterialApp(
@@ -77,5 +85,12 @@ void main() {
     await snap(tester, wotp.LogicOtpWidget(expected: '123456'), 'otp');
     await snap(tester, wwordle.LogicWordleWidget(word: 'ADOBE'), 'wordle');
     await snap(tester, wsudoku.LogicSudokuWidget(title: 'Sudoku'), 'sudoku');
+    await snap(tester, wcheckers.LogicCheckersWidget(title: 'Checkers'),
+        'checkers');
+    await snap(tester, wyahtzee.LogicYahtzeeWidget(title: 'Yahtzee'),
+        'yahtzee');
+    await snap(tester, wjigsaw.LogicJigsawWidget(title: 'Jigsaw'), 'jigsaw');
+    await snap(tester, wbinary.LogicBinaryConverterWidget(title: 'Converter'),
+        'binary_converter');
   });
 }
