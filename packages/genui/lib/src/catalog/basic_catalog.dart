@@ -31,6 +31,7 @@ import 'usecases/logic_birth_chart.dart' as LogicBirthChart;
 import 'usecases/logic_bmi.dart' as LogicBmi;
 import 'usecases/logic_calculator.dart' as LogicCalculator;
 import 'usecases/logic_chess.dart' as LogicChess;
+import 'usecases/logic_compound_interest.dart' as LogicCompoundInterest;
 import 'usecases/logic_clock_reading.dart' as LogicClockReading;
 import 'usecases/logic_codebreaker.dart' as LogicCodebreaker;
 import 'usecases/logic_color_picker.dart' as LogicColorPicker;
@@ -52,6 +53,10 @@ import 'usecases/logic_math_trainer.dart' as LogicMathTrainer;
 import 'usecases/logic_memory_game.dart' as LogicMemoryGame;
 import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
 import 'usecases/logic_morse.dart' as LogicMorse;
+import 'usecases/logic_sign_up.dart' as LogicSignUp;
+import 'usecases/logic_password_meter.dart' as LogicPasswordMeter;
+import 'usecases/logic_otp.dart' as LogicOtp;
+import 'usecases/logic_login.dart' as LogicLogin;
 import 'usecases/logic_password_gen.dart' as LogicPasswordGen;
 import 'usecases/logic_piano.dart' as LogicPiano;
 import 'usecases/logic_poll_vote.dart' as LogicPollVote;
@@ -185,6 +190,7 @@ abstract final class BasicCatalogItems {
     LogicBmi.LogicBmi.catalogItem,
     LogicCalculator.LogicCalculator.catalogItem,
     LogicChess.LogicChess.catalogItem,
+    LogicCompoundInterest.LogicCompoundInterest.catalogItem,
     LogicClockReading.LogicClockReading.catalogItem,
     LogicCodebreaker.LogicCodebreaker.catalogItem,
     LogicColorPicker.LogicColorPicker.catalogItem,
@@ -229,6 +235,10 @@ abstract final class BasicCatalogItems {
     LogicUnitConverter.LogicUnitConverter.catalogItem,
     LogicWheelPicker.LogicWheelPicker.catalogItem,
     LogicWordle.LogicWordle.catalogItem,
+    LogicLogin.LogicLogin.catalogItem,
+    LogicOtp.LogicOtp.catalogItem,
+    LogicPasswordMeter.LogicPasswordMeter.catalogItem,
+    LogicSignUp.LogicSignUp.catalogItem,
   ];
 
   static Catalog asCatalog({List<String> systemPromptFragments = const []}) {
