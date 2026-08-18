@@ -97,7 +97,9 @@ PROMPTEOF
   if [ "$AN_ERR" -ne 0 ] || [ "$TEST_RC" -ne 0 ]; then
     echo "[loop] VERIFY FAILED (analyze=$AN_ERR test_rc=$TEST_RC) -> revert + stop"
     git -C "$GENUI" checkout -- . 2>/dev/null
-    git -C "$GENUI" clean -fd packages/genui/lib/src/catalog/usecases 2>/dev/null
+    git -C "$GENUI" clean -fd \
+      packages/genui/lib/src/catalog/usecases \
+      packages/genui/test/usecases 2>/dev/null
     break
   fi
 
