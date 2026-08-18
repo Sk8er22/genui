@@ -106,3 +106,4 @@ export 'catalog/usecases/logic_typing_speed.dart';
 export 'catalog/usecases/logic_pathfinding.dart';
 export 'catalog/usecases/logic_peg_solitaire.dart';
 export 'catalog/usecases/logic_sorting_visualizer.dart';
+export 'catalog/usecases/logic_app_theme.dart';

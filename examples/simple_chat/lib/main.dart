@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
+import 'package:genui/genui.dart';
+
 import 'chat_session.dart';
 import 'primitives/app_mode.dart';
 import 'primitives/message.dart';
@@ -16,30 +18,40 @@ void main() async {
   Logger.root.onRecord.listen((record) {
     debugPrint('${record.level.name}: ${record.time}: ${record.message}');
   });
-  runApp(const MyApp());
+  // Load the dynamic runtime manifest so applied app state survives restarts.
+  final AppRuntimeManifest manifest = await AppRuntimeManifest.load(
+      AppRuntimeManifest.filePathFor('simple_chat'));
+  runApp(MyApp(manifest: manifest));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.manifest});
+
+  final AppRuntimeManifest? manifest;
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
+    // Seed from the applied manifest color when present, else default blue.
+    final Color seed = manifest?.colorArgb != null
+        ? Color(manifest!.colorArgb!)
+        : Colors.blue;
+    final colorScheme = ColorScheme.fromSeed(seedColor: seed);
     return MaterialApp(
-      title: 'Simple Chat Controller',
+      title: manifest?.logoText ?? 'Simple Chat Controller',
       theme: ThemeData(colorScheme: colorScheme),
       darkTheme: ThemeData(
         colorScheme: colorScheme.copyWith(brightness: Brightness.dark),
       ),
-      home: const ChatScreen(),
+      home: ChatScreen(manifest: manifest),
     );
   }
 }
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, this.aiClient});
+  const ChatScreen({super.key, this.aiClient, this.manifest});
 
   final AiClient? aiClient;
+  final AppRuntimeManifest? manifest;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();

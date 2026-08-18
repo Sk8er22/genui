@@ -26,6 +26,7 @@ import 'basic_catalog_widgets/video.dart' as video_item;
 // 'genui with logic' widgets (auto-generated; dedup + complete)
 import 'usecases/logic_2048.dart' as Logic2048;
 import 'usecases/logic_anagram.dart' as LogicAnagram;
+import 'usecases/logic_app_theme.dart' as LogicAppTheme;
 import 'usecases/logic_battleship.dart' as LogicBattleship;
 import 'usecases/logic_birth_chart.dart' as LogicBirthChart;
 import 'usecases/logic_bingo.dart' as LogicBingo;
@@ -207,6 +208,7 @@ abstract final class BasicCatalogItems {
   static final List<CatalogItem> logicCatalogItems = [
     Logic2048.Logic2048.catalogItem,
     LogicAnagram.LogicAnagram.catalogItem,
+    LogicAppTheme.LogicAppTheme.catalogItem,
     LogicBattleship.LogicBattleship.catalogItem,
     LogicBirthChart.LogicBirthChart.catalogItem,
     LogicBlackjack.LogicBlackjack.catalogItem,
