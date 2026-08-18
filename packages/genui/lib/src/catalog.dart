@@ -78,6 +78,7 @@ export 'catalog/usecases/logic_wheel_picker.dart';
 export 'catalog/usecases/logic_trivia.dart';
 export 'catalog/usecases/logic_times_table.dart';
 export 'catalog/usecases/logic_fraction_pizza.dart';
+export 'catalog/usecases/logic_game_of_life.dart';
 export 'catalog/usecases/logic_clock_reading.dart';
 export 'catalog/usecases/logic_morse.dart';
 export 'catalog/usecases/logic_nonogram.dart';

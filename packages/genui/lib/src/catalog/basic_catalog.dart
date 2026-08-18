@@ -44,6 +44,7 @@ import 'usecases/logic_dice.dart' as LogicDice;
 import 'usecases/logic_fifteen_puzzle.dart' as LogicFifteenPuzzle;
 import 'usecases/logic_flashcards.dart' as LogicFlashcards;
 import 'usecases/logic_fraction_pizza.dart' as LogicFractionPizza;
+import 'usecases/logic_game_of_life.dart' as LogicGameOfLife;
 import 'usecases/logic_gradient_colors.dart' as LogicGradientColors;
 import 'usecases/logic_gravity.dart' as LogicGravity;
 import 'usecases/logic_guess_number.dart' as LogicGuessNumber;
@@ -212,6 +213,7 @@ abstract final class BasicCatalogItems {
     LogicFlashcards.LogicFlashcards.catalogItem,
     LogicFifteenPuzzle.LogicFifteenPuzzle.catalogItem,
     LogicFractionPizza.LogicFractionPizza.catalogItem,
+    LogicGameOfLife.LogicGameOfLife.catalogItem,
     LogicGradientColors.LogicGradientColors.catalogItem,
     LogicGravity.LogicGravity.catalogItem,
     LogicGuessNumber.LogicGuessNumber.catalogItem,
