@@ -6,6 +6,7 @@
 // These exercise gameplay paths (swipe/move/render) that pure-build tests can't.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // ignore: avoid_relative_lib_imports
@@ -14,6 +15,8 @@ import '../../lib/src/catalog/usecases/logic_2048.dart' as g2048;
 import '../../lib/src/catalog/usecases/logic_reversi.dart' as reversi;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_expense_tracker.dart' as expenses;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_snake.dart' as snake;
 
 Future<void> pumpSized(WidgetTester tester, Widget child) async {
   await tester.pumpWidget(MaterialApp(
@@ -76,6 +79,33 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text(r'$0.00'), findsOneWidget);
     expect(find.text('No entries yet.'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('snake ticks, steers, pauses and restarts without crashing',
+      (tester) async {
+    await pumpSized(tester, snake.LogicSnakeWidget(title: 's', gridSize: 10));
+    await tester.pump();
+
+    // Step the game loop with explicit durations — never pumpAndSettle, the
+    // periodic timer would keep it from ever settling.
+    await tester.pump(const Duration(milliseconds: 250));
+    await tester.pump(const Duration(milliseconds: 250));
+
+    // Keyboard steering via the autofocused board.
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+    await tester.pump(const Duration(milliseconds: 250));
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowLeft);
+    await tester.pump(const Duration(milliseconds: 250));
+
+    // Pause / resume, then restart.
+    await tester.tap(find.byIcon(Icons.pause));
+    await tester.pump();
+    await tester.tap(find.byIcon(Icons.play_arrow));
+    await tester.pump();
+    await tester.tap(find.text('Restart'));
+    await tester.pump(const Duration(milliseconds: 250));
+
     expect(tester.takeException(), isNull);
   });
 }

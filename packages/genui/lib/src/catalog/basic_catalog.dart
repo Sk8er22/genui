@@ -62,6 +62,7 @@ import 'usecases/logic_morse.dart' as LogicMorse;
 import 'usecases/logic_nim.dart' as LogicNim;
 import 'usecases/logic_nonogram.dart' as LogicNonogram;
 import 'usecases/logic_sign_up.dart' as LogicSignUp;
+import 'usecases/logic_snake.dart' as LogicSnake;
 import 'usecases/logic_slots.dart' as LogicSlots;
 import 'usecases/logic_typing_speed.dart' as LogicTypingSpeed;
 import 'usecases/logic_password_meter.dart' as LogicPasswordMeter;
@@ -266,6 +267,7 @@ abstract final class BasicCatalogItems {
     LogicOtp.LogicOtp.catalogItem,
     LogicPasswordMeter.LogicPasswordMeter.catalogItem,
     LogicSignUp.LogicSignUp.catalogItem,
+    LogicSnake.LogicSnake.catalogItem,
     LogicSlots.LogicSlots.catalogItem,
     LogicTypingSpeed.LogicTypingSpeed.catalogItem,
     LogicBinaryConverter.LogicBinaryConverter.catalogItem,

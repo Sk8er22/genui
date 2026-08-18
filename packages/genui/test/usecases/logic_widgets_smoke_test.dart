@@ -15,6 +15,8 @@ import '../../lib/src/catalog/usecases/logic_chess.dart' as chess;
 import '../../lib/src/catalog/usecases/logic_expense_tracker.dart' as expenses;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_calendar.dart' as calendar;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_snake.dart' as snake;
 
 void main() {
   group('LogicChess catalog registration', () {
@@ -60,10 +62,26 @@ void main() {
     });
   });
 
+  group('LogicSnake catalog registration', () {
+    test('name is LogicSnake and has a schema', () {
+      final item = snake.LogicSnake.catalogItem;
+      expect(item.name, 'LogicSnake');
+      expect(item.dataSchema, isA<Schema>());
+    });
+
+    test('example JSON parses and includes a root component', () {
+      final String json = snake.LogicSnake.catalogItem.exampleData.first();
+      expect(json, contains('LogicSnake'));
+      expect(json, contains('root'));
+    });
+  });
+
   // Verify all exported usecase catalog items are reachable via the barrel.
   test('barrel exports logic chess widget type', () {
     // compile-time: ensures lib/src/catalog.dart re-export resolves
     // ignore: unnecessary_statements
     chess.LogicChess.catalogItem;
+    // ignore: unnecessary_statements
+    snake.LogicSnake.catalogItem;
   });
 }
