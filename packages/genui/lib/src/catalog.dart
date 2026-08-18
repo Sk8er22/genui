@@ -38,6 +38,7 @@ export 'catalog/usecases/logic_calculator.dart';
 export 'catalog/usecases/logic_quiz_card.dart';
 export 'catalog/usecases/logic_poll_vote.dart';
 export 'catalog/usecases/logic_todo_list.dart';
+export 'catalog/usecases/logic_fifteen_puzzle.dart';
 export 'catalog/usecases/logic_flashcards.dart';
 export 'catalog/usecases/logic_stopwatch.dart';
 export 'catalog/usecases/logic_countdown.dart';

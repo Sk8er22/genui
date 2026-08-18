@@ -38,6 +38,7 @@ import 'usecases/logic_connect4.dart' as LogicConnect4;
 import 'usecases/logic_countdown.dart' as LogicCountdown;
 import 'usecases/logic_currency.dart' as LogicCurrency;
 import 'usecases/logic_dice.dart' as LogicDice;
+import 'usecases/logic_fifteen_puzzle.dart' as LogicFifteenPuzzle;
 import 'usecases/logic_flashcards.dart' as LogicFlashcards;
 import 'usecases/logic_fraction_pizza.dart' as LogicFractionPizza;
 import 'usecases/logic_gradient_colors.dart' as LogicGradientColors;
@@ -189,6 +190,7 @@ abstract final class BasicCatalogItems {
     LogicCurrency.LogicCurrency.catalogItem,
     LogicDice.LogicDice.catalogItem,
     LogicFlashcards.LogicFlashcards.catalogItem,
+    LogicFifteenPuzzle.LogicFifteenPuzzle.catalogItem,
     LogicFractionPizza.LogicFractionPizza.catalogItem,
     LogicGradientColors.LogicGradientColors.catalogItem,
     LogicGravity.LogicGravity.catalogItem,
