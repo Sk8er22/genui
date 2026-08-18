@@ -13,6 +13,8 @@ import 'package:json_schema_builder/json_schema_builder.dart';
 import '../../lib/src/catalog/usecases/logic_chess.dart' as chess;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_expense_tracker.dart' as expenses;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_calendar.dart' as calendar;
 
 void main() {
   group('LogicChess catalog registration', () {
@@ -40,6 +42,20 @@ void main() {
       final String json =
           expenses.LogicExpenseTracker.catalogItem.exampleData.first();
       expect(json, contains('LogicExpenseTracker'));
+      expect(json, contains('root'));
+    });
+  });
+
+  group('LogicCalendar catalog registration', () {
+    test('name is LogicCalendar and has a schema', () {
+      final item = calendar.LogicCalendar.catalogItem;
+      expect(item.name, 'LogicCalendar');
+      expect(item.dataSchema, isA<Schema>());
+    });
+
+    test('example JSON parses and includes a root component', () {
+      final String json = calendar.LogicCalendar.catalogItem.exampleData.first();
+      expect(json, contains('LogicCalendar'));
       expect(json, contains('root'));
     });
   });

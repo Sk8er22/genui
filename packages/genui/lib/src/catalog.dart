@@ -36,6 +36,7 @@ export 'catalog/usecases/logic_birth_chart.dart';
 export 'catalog/usecases/logic_blackjack.dart';
 export 'catalog/usecases/logic_tic_tac_toe.dart';
 export 'catalog/usecases/logic_calculator.dart';
+export 'catalog/usecases/logic_calendar.dart';
 export 'catalog/usecases/logic_quiz_card.dart';
 export 'catalog/usecases/logic_poll_vote.dart';
 export 'catalog/usecases/logic_todo_list.dart';

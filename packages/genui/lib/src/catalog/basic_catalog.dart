@@ -31,6 +31,7 @@ import 'usecases/logic_birth_chart.dart' as LogicBirthChart;
 import 'usecases/logic_blackjack.dart' as LogicBlackjack;
 import 'usecases/logic_bmi.dart' as LogicBmi;
 import 'usecases/logic_calculator.dart' as LogicCalculator;
+import 'usecases/logic_calendar.dart' as LogicCalendar;
 import 'usecases/logic_chess.dart' as LogicChess;
 import 'usecases/logic_compound_interest.dart' as LogicCompoundInterest;
 import 'usecases/logic_clock_reading.dart' as LogicClockReading;
@@ -206,6 +207,7 @@ abstract final class BasicCatalogItems {
     LogicBlackjack.LogicBlackjack.catalogItem,
     LogicBmi.LogicBmi.catalogItem,
     LogicCalculator.LogicCalculator.catalogItem,
+    LogicCalendar.LogicCalendar.catalogItem,
     LogicChess.LogicChess.catalogItem,
     LogicCompoundInterest.LogicCompoundInterest.catalogItem,
     LogicClockReading.LogicClockReading.catalogItem,
