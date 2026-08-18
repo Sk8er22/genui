@@ -69,11 +69,11 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
 
   /// Destination squares for single-step (non-capture) diagonal moves.
   List<int> _simpleDests(int from, List<int> board) {
-    final p = board[from];
-    final r0 = from ~/ 8, c0 = from % 8;
+    final int p = board[from];
+    final int r0 = from ~/ 8, c0 = from % 8;
     final res = <int>[];
     for (final (dr, dc) in _dirs(p)) {
-      final nr = r0 + dr, nc = c0 + dc;
+      final int nr = r0 + dr, nc = c0 + dc;
       if (nr < 0 || nr > 7 || nc < 0 || nc > 7) continue;
       if (board[nr * 8 + nc] == _empty) res.add(nr * 8 + nc);
     }
@@ -82,15 +82,15 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
 
   /// Landing squares (distance 2) after jumping an enemy piece.
   List<int> _captureDests(int from, List<int> board) {
-    final p = board[from];
-    final enemy = 1 - _playerOf(p);
-    final r0 = from ~/ 8, c0 = from % 8;
+    final int p = board[from];
+    final int enemy = 1 - _playerOf(p);
+    final int r0 = from ~/ 8, c0 = from % 8;
     final res = <int>[];
     for (final (dr, dc) in _dirs(p)) {
-      final mr = r0 + dr, mc = c0 + dc;
-      final lr = r0 + 2 * dr, lc = c0 + 2 * dc;
+      final int mr = r0 + dr, mc = c0 + dc;
+      final int lr = r0 + 2 * dr, lc = c0 + 2 * dc;
       if (lr < 0 || lr > 7 || lc < 0 || lc > 7) continue;
-      final mid = mr * 8 + mc, land = lr * 8 + lc;
+      final int mid = mr * 8 + mc, land = lr * 8 + lc;
       if (board[mid] != _empty &&
           _playerOf(board[mid]) == enemy &&
           board[land] == _empty) {
@@ -102,7 +102,7 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
 
   bool _canAnyCapture(int player) {
     for (var i = 0; i < 64; i++) {
-      final p = _board[i];
+      final int p = _board[i];
       if (p != _empty &&
           _playerOf(p) == player &&
           _captureDests(i, _board).isNotEmpty) {
@@ -115,7 +115,7 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
   bool _hasAnyMove(int player) {
     if (_canAnyCapture(player)) return true;
     for (var i = 0; i < 64; i++) {
-      final p = _board[i];
+      final int p = _board[i];
       if (p != _empty &&
           _playerOf(p) == player &&
           _simpleDests(i, _board).isNotEmpty) {
@@ -126,10 +126,10 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
   }
 
   void _select(int i) {
-    final p = _board[i];
+    final int p = _board[i];
     if (p == _empty || _playerOf(p) != _turn) return;
-    final forceCapture = _canAnyCapture(_turn);
-    final capDests = _captureDests(i, _board);
+    final bool forceCapture = _canAnyCapture(_turn);
+    final List<int> capDests = _captureDests(i, _board);
     if (forceCapture) {
       if (capDests.isEmpty) return; // piece cannot capture; forced-capture on
       setState(() {
@@ -138,7 +138,7 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
       });
       return;
     }
-    final simple = _simpleDests(i, _board);
+    final List<int> simple = _simpleDests(i, _board);
     if (simple.isEmpty) return;
     setState(() {
       _selected = i;
@@ -153,7 +153,7 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
         _performMove(_selected!, i);
         return;
       }
-      final p = _board[i];
+      final int p = _board[i];
       if (p != _empty && _playerOf(p) == _turn) {
         _select(i);
         return;
@@ -168,10 +168,10 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
   }
 
   void _performMove(int from, int to) {
-    final p = _board[from];
-    final bool isCapture = (to ~/ 8 - from ~/ 8).abs() == 2;
+    final int p = _board[from];
+    final isCapture = (to ~/ 8 - from ~/ 8).abs() == 2;
     if (isCapture) {
-      final mid =
+      final int mid =
           ((from ~/ 8 + to ~/ 8) ~/ 2) * 8 + ((from % 8 + to % 8) ~/ 2);
       _board[mid] = _empty;
     }
@@ -179,13 +179,13 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
     _board[from] = _empty;
 
     // Crown on reaching the opponent's back rank.
-    final r = to ~/ 8;
+    final int r = to ~/ 8;
     if (p == _red && r == 7) _board[to] = _redKing;
     if (p == _black && r == 0) _board[to] = _blackKing;
 
     setState(() {
       if (isCapture) {
-        final cont = _captureDests(to, _board);
+        final List<int> cont = _captureDests(to, _board);
         if (cont.isNotEmpty) {
           // Same piece must keep capturing (multi-jump); turn stays.
           _selected = to;
@@ -202,7 +202,7 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
 
   void _checkEnd() {
     var redCount = 0, blackCount = 0;
-    for (final c in _board) {
+    for (final int c in _board) {
       if (c == _red || c == _redKing) {
         redCount++;
       } else if (c == _black || c == _blackKing) {
@@ -253,8 +253,8 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
   }
 
   Widget _piece(int p) {
-    final isRed = (p == _red || p == _redKing);
-    final isKing = _isKing(p);
+    final bool isRed = p == _red || p == _redKing;
+    final bool isKing = _isKing(p);
     final Color color = isRed ? Colors.red.shade600 : Colors.blueGrey.shade900;
     return Container(
       width: 34,
@@ -274,10 +274,10 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
   }
 
   Widget _square(int i) {
-    final r = i ~/ 8, c = i % 8;
+    final int r = i ~/ 8, c = i % 8;
     final bool isDark = (r + c).isOdd;
     final int p = _board[i];
-    final bool isSelected = _selected == i;
+    final isSelected = _selected == i;
     final bool isTarget = _moves.contains(i);
     return GestureDetector(
       onTap: () => _onTap(i),
@@ -295,7 +295,7 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
                 height: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.25),
+                  color: Colors.black.withValues(alpha: 0.25),
                   border: Border.all(color: Colors.white70, width: 2),
                 ),
               ),
@@ -352,9 +352,10 @@ class _LogicCheckersWidgetState extends State<LogicCheckersWidget> {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     _swatch(Colors.red.shade600),
-                    Text("Red", style: Theme.of(context).textTheme.bodyMedium),
+                    Text('Red', style: Theme.of(context).textTheme.bodyMedium),
                     _swatch(Colors.blueGrey.shade900),
-                    Text("Black", style: Theme.of(context).textTheme.bodyMedium),
+                    Text('Black',
+                        style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
                 OutlinedButton(

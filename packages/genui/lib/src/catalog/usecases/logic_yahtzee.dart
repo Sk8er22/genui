@@ -90,7 +90,7 @@ enum _Category {
 
 Map<int, int> _counts(List<int> dice) {
   final Map<int, int> m = {};
-  for (final int v in dice) {
+  for (final v in dice) {
     m[v] = (m[v] ?? 0) + 1;
   }
   return m;
@@ -108,7 +108,7 @@ int _fullHouse(List<int> d) {
 }
 
 List<int> _distinctSorted(List<int> dice) {
-  final s = <int>{...dice}.toList();
+  final List<int> s = <int>{...dice}.toList();
   s.sort();
   return s;
 }
@@ -116,7 +116,7 @@ List<int> _distinctSorted(List<int> dice) {
 /// Run-lengths of consecutive values (e.g. [1,2,3,3,4] -> [3,2]).
 List<int> _runs(List<int> sortedDistinct) {
   final List<int> runs = [];
-  int run = 1;
+  var run = 1;
   for (var i = 1; i < sortedDistinct.length; i++) {
     if (sortedDistinct[i] == sortedDistinct[i - 1] + 1) {
       run++;
@@ -181,7 +181,7 @@ class _LogicYahtzeeWidgetState extends State<LogicYahtzeeWidget> {
       _rolling = true;
       _rollsLeft--;
     });
-    final List<int> next = List<int>.from(_dice);
+    final next = List<int>.from(_dice);
     // Animate only the unkept dice.
     for (var step = 0; step < 7; step++) {
       for (var i = 0; i < _numDice; i++) {
@@ -209,8 +209,8 @@ class _LogicYahtzeeWidgetState extends State<LogicYahtzeeWidget> {
   }
 
   int _upperTotal() {
-    int t = 0;
-    for (final c in const [
+    var t = 0;
+    for (final _Category c in const [
       _Category.ones,
       _Category.twos,
       _Category.threes,
@@ -225,9 +225,9 @@ class _LogicYahtzeeWidgetState extends State<LogicYahtzeeWidget> {
 
   int _grandTotal() {
     final int upper = _upperTotal();
-    final int bonus = upper >= 63 ? 35 : 0;
-    int lower = 0;
-    for (final c in _Category.values) {
+    final bonus = upper >= 63 ? 35 : 0;
+    var lower = 0;
+    for (final _Category c in _Category.values) {
       if (!c.label.contains('Yahtzee')) lower += _scorecard[c] ?? 0;
     }
     // The Yahtzee category points + any bonus lines from extra 5-of-a-kinds.
@@ -390,7 +390,7 @@ class _LogicYahtzeeWidgetState extends State<LogicYahtzeeWidget> {
                   _kept = List.filled(_numDice, false);
                   _rollsLeft = _maxRolls;
                   _turn = 1;
-                  for (final k in _scorecard.keys) {
+                  for (final _Category k in _scorecard.keys) {
                     _scorecard[k] = null;
                   }
                   _yahtzeeBonusCount = 0;
@@ -406,7 +406,7 @@ class _LogicYahtzeeWidgetState extends State<LogicYahtzeeWidget> {
 
   String _upperUpperText() {
     final int upper = _upperTotal();
-    final int bonus = upper >= 63 ? 35 : 0;
+    final bonus = upper >= 63 ? 35 : 0;
     return '$upper${bonus > 0 ? ' + $bonus bonus' : ''}';
   }
 

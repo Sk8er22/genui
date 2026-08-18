@@ -80,6 +80,10 @@ import 'usecases/logic_times_table.dart' as LogicTimesTable;
 import 'usecases/logic_tip_calculator.dart' as LogicTipCalculator;
 import 'usecases/logic_tower_of_hanoi.dart' as LogicTowerOfHanoi;
 import 'usecases/logic_todo_list.dart' as LogicTodoList;
+import 'usecases/logic_binary_converter.dart' as LogicBinaryConverter;
+import 'usecases/logic_checkers.dart' as LogicCheckers;
+import 'usecases/logic_jigsaw.dart' as LogicJigsaw;
+import 'usecases/logic_yahtzee.dart' as LogicYahtzee;
 import 'usecases/logic_trivia.dart' as LogicTrivia;
 import 'usecases/logic_unit_converter.dart' as LogicUnitConverter;
 import 'usecases/logic_wheel_picker.dart' as LogicWheelPicker;
@@ -247,6 +251,10 @@ abstract final class BasicCatalogItems {
     LogicPasswordMeter.LogicPasswordMeter.catalogItem,
     LogicSignUp.LogicSignUp.catalogItem,
     LogicTypingSpeed.LogicTypingSpeed.catalogItem,
+    LogicBinaryConverter.LogicBinaryConverter.catalogItem,
+    LogicCheckers.LogicCheckers.catalogItem,
+    LogicJigsaw.LogicJigsaw.catalogItem,
+    LogicYahtzee.LogicYahtzee.catalogItem,
   ];
 
   static Catalog asCatalog({List<String> systemPromptFragments = const []}) {
