@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_windows
+  media_kit_video
   url_launcher_windows
   video_player_win
 )

@@ -104,19 +104,23 @@ class _LogicChessWidgetState extends State<LogicChessWidget> {
           if (_inBounds(rr, cc) && _board[rr][cc] == null) out.add((rr, cc));
           if (_inBounds(rr, cc) && _isEnemy(rr, cc)) out.add((rr, cc));
         }
+        return out;
       case 'r':
         for (final d in const [(0, 1), (0, -1), (1, 0), (-1, 0)]) {
           addLine(d.$1, d.$2);
         }
+        return out;
       case 'b':
         for (final d in const [(1, 1), (1, -1), (-1, 1), (-1, -1)]) {
           addLine(d.$1, d.$2);
         }
+        return out;
       case 'q':
         for (final d in const [(0, 1), (0, -1), (1, 0), (-1, 0),
             (1, 1), (1, -1), (-1, 1), (-1, -1)]) {
           addLine(d.$1, d.$2);
         }
+        return out;
       case 'k':
         for (final d in const [(0, 1), (0, -1), (1, 0), (-1, 0),
             (1, 1), (1, -1), (-1, 1), (-1, -1)]) {
@@ -124,6 +128,7 @@ class _LogicChessWidgetState extends State<LogicChessWidget> {
           if (_inBounds(rr, cc) && _board[rr][cc] == null) out.add((rr, cc));
           if (_inBounds(rr, cc) && _isEnemy(rr, cc)) out.add((rr, cc));
         }
+        return out;
       case 'p':
         final int dir = white ? -1 : 1;
         final int start = white ? 6 : 1;
@@ -223,6 +228,8 @@ class _LogicChessWidgetState extends State<LogicChessWidget> {
   }
 
   void _tap(int r, int c) {
+    // Freeze the board once the game is decided (mate/stalemate).
+    if (_status != null) return;
     setState(() {
       if (_selR != null) {
         final List<(int, int)> legal = _legal(_selR!, _selC!);

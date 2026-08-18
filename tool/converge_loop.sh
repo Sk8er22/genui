@@ -43,29 +43,35 @@ while true; do
 
   # --- HOOK: clear verdict, ask harness to improve + judge convergence ---
   : > "$VERDICT"
-  (
-    cd "$GENUI" || exit 1
-    node "$DSHBIN" --profile headless \
-"CONVERGENCE LOOP CYCLE for the genui logic-widget catalog ($GENUI).
+  _PROMPT="/tmp/genui_loop_prompt_${cycle}.txt"
+  cat > "$_PROMPT" <<'PROMPTEOF'
+CONVERGENCE LOOP CYCLE for the genui logic-widget catalog (__GENUI__).
 
 STEP 1 — Pick ONE concrete improvement that does NOT already exist:
-  * a NEW logic widget: create lib/src/catalog/usecases/logic_<name>.dart
-    (CatalogItem `Logic<Name>`, schema via S.object, a StatefulWidget),
+  * a NEW logic widget: create libraries/stubs/logic_<name>.dart
+    (CatalogItem named Logic<Name>, schema via S.object, a StatefulWidget),
     then export it in packages/genui/lib/src/catalog.dart and register it in
     packages/genui/lib/src/catalog/basic_catalog.dart logicCatalogItems; OR
   * a REAL bug fix: read a widget + its gameplay to confirm the bug, then fix.
 List current widgets first so you don't add a duplicate.
 
 STEP 2 — Implement it (source only). Then CHECK: is there still more genuinely
-useful improvement left? Write EXACTLY one line to $VERDICT:
+useful improvement left? Write EXACTLY one line to __VERDICT__:
   CONTINUE:<one-line note on what remains>
   — if you still see useful new widgets or known bugs to fix, OR
   CONVERGED:<reason>
   — only if the catalog is in good shape and no more high-value work remains.
 If you made NO code change this cycle, write CONVERGED:no-change.
 
-Reply 'done'." 
+Reply 'done'.
+PROMPTEOF
+  sed -i "s|__GENUI__|$GENUI|g; s|__VERDICT__|$VERDICT|g" "$_PROMPT"
+
+  (
+    cd "$GENUI" || exit 1
+    node "$DSHBIN" --profile headless "$(cat "$_PROMPT")"
   ) | tail -5
+  rm -f "$_PROMPT"
 
   # --- verify (analyze + unit tests) ---
   echo "[loop] verifying..."
