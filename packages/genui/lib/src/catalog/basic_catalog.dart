@@ -53,6 +53,7 @@ import 'usecases/logic_math_trainer.dart' as LogicMathTrainer;
 import 'usecases/logic_memory_game.dart' as LogicMemoryGame;
 import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
 import 'usecases/logic_morse.dart' as LogicMorse;
+import 'usecases/logic_nonogram.dart' as LogicNonogram;
 import 'usecases/logic_sign_up.dart' as LogicSignUp;
 import 'usecases/logic_password_meter.dart' as LogicPasswordMeter;
 import 'usecases/logic_otp.dart' as LogicOtp;
@@ -212,6 +213,7 @@ abstract final class BasicCatalogItems {
     LogicMemoryGame.LogicMemoryGame.catalogItem,
     LogicMinesweeper.LogicMinesweeper.catalogItem,
     LogicMorse.LogicMorse.catalogItem,
+    LogicNonogram.LogicNonogram.catalogItem,
     LogicPasswordGen.LogicPasswordGen.catalogItem,
     LogicPiano.LogicPiano.catalogItem,
     LogicPollVote.LogicPollVote.catalogItem,

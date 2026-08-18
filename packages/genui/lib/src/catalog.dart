@@ -78,6 +78,7 @@ export 'catalog/usecases/logic_times_table.dart';
 export 'catalog/usecases/logic_fraction_pizza.dart';
 export 'catalog/usecases/logic_clock_reading.dart';
 export 'catalog/usecases/logic_morse.dart';
+export 'catalog/usecases/logic_nonogram.dart';
 export 'catalog/usecases/logic_login.dart';
 export 'catalog/usecases/logic_otp.dart';
 export 'catalog/usecases/logic_password_meter.dart';
