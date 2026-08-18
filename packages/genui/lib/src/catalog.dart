@@ -78,3 +78,4 @@ export 'catalog/usecases/logic_fraction_pizza.dart';
 export 'catalog/usecases/logic_clock_reading.dart';
 export 'catalog/usecases/logic_morse.dart';
 export 'catalog/usecases/logic_tower_of_hanoi.dart';
+export 'catalog/usecases/logic_eight_queens.dart';
