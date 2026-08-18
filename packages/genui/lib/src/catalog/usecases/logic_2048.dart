@@ -72,41 +72,44 @@ class _Logic2048WidgetState extends State<Logic2048Widget> {
 
   bool _move(int dr, int dc) {
     bool moved = false;
-    final order = dr != 0 ? (dr > 0 ? [3, 2, 1, 0] : [0, 1, 2, 3])
-        : (dc > 0 ? [3, 2, 1, 0] : [0, 1, 2, 3]);
-    for (final i in order) {
-      for (final j in order) {
-        final List<int?> cells = [];
-        int r = dr != 0 ? i : j;
-        int c = dc != 0 ? j : i;
-        // collect along line
-        final List<(int, int)> line = [];
-        for (var k = 0; k < 4; k++) {
-          line.add((r, c));
-          r += dr;
-          c += dc;
+    // Walk each lane starting from the destination edge, stepping inward, so
+    // indices never leave the board. Lane is the fixed row (horizontal) or
+    // column (vertical); position steps toward the edge the tiles slide to.
+    final int edge = dr != 0 ? (dr > 0 ? 3 : 0) : (dc > 0 ? 3 : 0);
+    final int step = dr != 0 ? (dr > 0 ? -1 : 1) : (dc > 0 ? -1 : 1);
+
+    for (var lane = 0; lane < 4; lane++) {
+      final List<int> line = [];
+      var k = edge;
+      for (var t = 0; t < 4; t++) {
+        line.add(dr != 0 ? _g[k][lane] : _g[lane][k]);
+        k += step;
+      }
+      final List<int> vals = line.where((v) => v != 0).toList();
+      if (vals.isEmpty) continue;
+      final List<int> merged = [];
+      for (var t = 0; t < vals.length; t++) {
+        if (t + 1 < vals.length && vals[t] == vals[t + 1]) {
+          final int nv = vals[t] * 2;
+          merged.add(nv);
+          _score += nv;
+          if (nv == 2048) _won = true;
+          t++;
+        } else {
+          merged.add(vals[t]);
         }
-        // compress + merge
-        final List<int> vals = line.map((p) => _g[p.$1][p.$2]).where((v) => v != 0).toList();
-        if (vals.isEmpty) continue;
-        final List<int> merged = [];
-        for (var k = 0; k < vals.length; k++) {
-          if (k + 1 < vals.length && vals[k] == vals[k + 1]) {
-            final int nv = vals[k] * 2;
-            merged.add(nv);
-            _score += nv;
-            if (nv == 2048) _won = true;
-            k++;
-          } else {
-            merged.add(vals[k]);
-          }
+      }
+      k = edge;
+      for (var t = 0; t < 4; t++) {
+        final int value = t < merged.length ? merged[t] : 0;
+        final int cur = dr != 0 ? _g[k][lane] : _g[lane][k];
+        if (cur != value) moved = true;
+        if (dr != 0) {
+          _g[k][lane] = value;
+        } else {
+          _g[lane][k] = value;
         }
-        for (var k = 0; k < 4; k++) {
-          final int idx = k < merged.length ? merged[k] : 0;
-          final (rr, cc) = line[k];
-          if (_g[rr][cc] != idx) moved = true;
-          _g[rr][cc] = idx;
-        }
+        k += step;
       }
     }
     return moved;

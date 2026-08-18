@@ -23,8 +23,7 @@ import 'basic_catalog_widgets/tabs.dart' as tabs_item;
 import 'basic_catalog_widgets/text.dart' as text_item;
 import 'basic_catalog_widgets/text_field.dart' as text_field_item;
 import 'basic_catalog_widgets/video.dart' as video_item;
-
-// 'genui with logic' widgets
+// 'genui with logic' widgets (auto-generated; dedup + complete)
 import 'usecases/logic_2048.dart' as Logic2048;
 import 'usecases/logic_anagram.dart' as LogicAnagram;
 import 'usecases/logic_battleship.dart' as LogicBattleship;
@@ -32,6 +31,7 @@ import 'usecases/logic_birth_chart.dart' as LogicBirthChart;
 import 'usecases/logic_bmi.dart' as LogicBmi;
 import 'usecases/logic_calculator.dart' as LogicCalculator;
 import 'usecases/logic_chess.dart' as LogicChess;
+import 'usecases/logic_clock_reading.dart' as LogicClockReading;
 import 'usecases/logic_codebreaker.dart' as LogicCodebreaker;
 import 'usecases/logic_color_picker.dart' as LogicColorPicker;
 import 'usecases/logic_connect4.dart' as LogicConnect4;
@@ -39,6 +39,7 @@ import 'usecases/logic_countdown.dart' as LogicCountdown;
 import 'usecases/logic_currency.dart' as LogicCurrency;
 import 'usecases/logic_dice.dart' as LogicDice;
 import 'usecases/logic_flashcards.dart' as LogicFlashcards;
+import 'usecases/logic_fraction_pizza.dart' as LogicFractionPizza;
 import 'usecases/logic_gradient_colors.dart' as LogicGradientColors;
 import 'usecases/logic_gravity.dart' as LogicGravity;
 import 'usecases/logic_guess_number.dart' as LogicGuessNumber;
@@ -47,6 +48,7 @@ import 'usecases/logic_hangman.dart' as LogicHangman;
 import 'usecases/logic_math_trainer.dart' as LogicMathTrainer;
 import 'usecases/logic_memory_game.dart' as LogicMemoryGame;
 import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
+import 'usecases/logic_morse.dart' as LogicMorse;
 import 'usecases/logic_password_gen.dart' as LogicPasswordGen;
 import 'usecases/logic_piano.dart' as LogicPiano;
 import 'usecases/logic_poll_vote.dart' as LogicPollVote;
@@ -62,12 +64,16 @@ import 'usecases/logic_sudoku.dart' as LogicSudoku;
 import 'usecases/logic_tarot.dart' as LogicTarot;
 import 'usecases/logic_tetris.dart' as LogicTetris;
 import 'usecases/logic_tic_tac_toe.dart' as LogicTicTacToe;
+import 'usecases/logic_times_table.dart' as LogicTimesTable;
 import 'usecases/logic_tip_calculator.dart' as LogicTipCalculator;
 import 'usecases/logic_todo_list.dart' as LogicTodoList;
 import 'usecases/logic_trivia.dart' as LogicTrivia;
 import 'usecases/logic_unit_converter.dart' as LogicUnitConverter;
 import 'usecases/logic_wheel_picker.dart' as LogicWheelPicker;
 import 'usecases/logic_wordle.dart' as LogicWordle;
+
+
+// 'genui with logic' widgets
 import 'basic_functions.dart';
 
 /// A collection of basic catalog items that can be used to build simple
@@ -165,6 +171,7 @@ abstract final class BasicCatalogItems {
   /// properly displayed. If the app does not work with such data, use
   /// [asNoAssetCatalog] instead.
 
+
   /// Interactive 'genui with logic' widgets.
   static final List<CatalogItem> logicCatalogItems = [
     Logic2048.Logic2048.catalogItem,
@@ -174,6 +181,7 @@ abstract final class BasicCatalogItems {
     LogicBmi.LogicBmi.catalogItem,
     LogicCalculator.LogicCalculator.catalogItem,
     LogicChess.LogicChess.catalogItem,
+    LogicClockReading.LogicClockReading.catalogItem,
     LogicCodebreaker.LogicCodebreaker.catalogItem,
     LogicColorPicker.LogicColorPicker.catalogItem,
     LogicConnect4.LogicConnect4.catalogItem,
@@ -181,6 +189,7 @@ abstract final class BasicCatalogItems {
     LogicCurrency.LogicCurrency.catalogItem,
     LogicDice.LogicDice.catalogItem,
     LogicFlashcards.LogicFlashcards.catalogItem,
+    LogicFractionPizza.LogicFractionPizza.catalogItem,
     LogicGradientColors.LogicGradientColors.catalogItem,
     LogicGravity.LogicGravity.catalogItem,
     LogicGuessNumber.LogicGuessNumber.catalogItem,
@@ -189,6 +198,7 @@ abstract final class BasicCatalogItems {
     LogicMathTrainer.LogicMathTrainer.catalogItem,
     LogicMemoryGame.LogicMemoryGame.catalogItem,
     LogicMinesweeper.LogicMinesweeper.catalogItem,
+    LogicMorse.LogicMorse.catalogItem,
     LogicPasswordGen.LogicPasswordGen.catalogItem,
     LogicPiano.LogicPiano.catalogItem,
     LogicPollVote.LogicPollVote.catalogItem,
@@ -204,6 +214,7 @@ abstract final class BasicCatalogItems {
     LogicTarot.LogicTarot.catalogItem,
     LogicTetris.LogicTetris.catalogItem,
     LogicTicTacToe.LogicTicTacToe.catalogItem,
+    LogicTimesTable.LogicTimesTable.catalogItem,
     LogicTipCalculator.LogicTipCalculator.catalogItem,
     LogicTodoList.LogicTodoList.catalogItem,
     LogicTrivia.LogicTrivia.catalogItem,

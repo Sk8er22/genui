@@ -54,14 +54,18 @@ class _LogicSudokuWidgetState extends State<LogicSudokuWidget> {
   }
 
   void _generate() {
-    // Build a valid 4x4 solution from a latin-square offset pattern, then
-    // reveal ~8 cells as the puzzle.
-    final List<List<int>> sol = List.generate(_n, (_) => List.filled(_n, 0));
-    for (var r = 0; r < _n; r++) {
-      for (var c = 0; c < _n; c++) {
-        sol[r][c] = ((r % 2) * 2 + (c % 2) + r + c) % 4 + 1;
-      }
-    }
+    // A guaranteed-valid 4x4 Sudoku solution (rows/cols/2x2 boxes all have
+    // {1,2,3,4}), then revealed cells make the puzzle. Verified correct.
+    const List<List<int>> base = [
+      [1, 2, 3, 4],
+      [3, 4, 1, 2],
+      [2, 1, 4, 3],
+      [4, 3, 2, 1],
+    ];
+    // Randomize by permuting the digit labels (keeps the solution valid).
+    final List<int> perm = [1, 2, 3, 4]..shuffle(_rng);
+    final List<List<int>> sol = List.generate(_n, (r) =>
+        List.generate(_n, (c) => perm[base[r][c] - 1]));
     _solution = sol;
     _board = [
       for (var r = 0; r < _n; r++) List<int>.filled(_n, 0)

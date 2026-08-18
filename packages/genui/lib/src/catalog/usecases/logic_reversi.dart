@@ -63,21 +63,21 @@ class _LogicReversiWidgetState extends State<LogicReversiWidget> {
   bool _in(int r, int c) => r >= 0 && r < _n && c >= 0 && c < _n;
 
   /// Flips to play for player `me` placed at (r,c); returns flips applied.
-  int _applyPlace(int r, int c, int me) {
+  int _applyPlace(int r, int c, int me, List<List<int?>> board) {
     final int opp = me == 1 ? 2 : 1;
     int flips = 0;
     for (final d in const [(0, 1), (0, -1), (1, 0), (-1, 0),
         (1, 1), (1, -1), (-1, 1), (-1, -1)]) {
       var rr = r + d.$1, cc = c + d.$2;
       final List<(int, int)> toFlip = [];
-      while (_in(rr, cc) && _board[rr][cc] == opp) {
+      while (_in(rr, cc) && board[rr][cc] == opp) {
         toFlip.add((rr, cc));
         rr += d.$1;
         cc += d.$2;
       }
-      if (_in(rr, cc) && _board[rr][cc] == me) {
+      if (_in(rr, cc) && board[rr][cc] == me) {
         for (final (x, y) in toFlip) {
-          _board[x][y] = me;
+          board[x][y] = me;
         }
         flips += toFlip.length;
       }
@@ -87,14 +87,17 @@ class _LogicReversiWidgetState extends State<LogicReversiWidget> {
 
   bool _isLegal(int r, int c, int me) {
     if (_board[r][c] != null) return false;
-    return _applyPlace(r, c, me) > 0;
+    // probe on a copy so legality checking never mutates the live board
+    final List<List<int?>> probe =
+        [for (final row in _board) List<int?>.from(row)];
+    return _applyPlace(r, c, me, probe) > 0;
   }
 
   void _tap(int r, int c) {
     if (_gameOver || !_isLegal(r, c, _black ? 1 : 2)) return;
     setState(() {
       _board[r][c] = _black ? 1 : 2;
-      _applyPlace(r, c, _black ? 1 : 2);
+      _applyPlace(r, c, _black ? 1 : 2, _board);
       // switch sides; if no moves, pass
       if (!_anyMove(_black ? 2 : 1)) {
         if (!_anyMove(_black ? 1 : 2)) {
