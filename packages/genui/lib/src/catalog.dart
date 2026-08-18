@@ -98,7 +98,4 @@ export 'catalog/usecases/logic_tower_of_hanoi.dart';
 export 'catalog/usecases/logic_eight_queens.dart';
 export 'catalog/usecases/logic_typing_speed.dart';
 export 'catalog/usecases/logic_peg_solitaire.dart';
-export 'catalog/usecases/logic_binary_converter.dart';
-export 'catalog/usecases/logic_checkers.dart';
-export 'catalog/usecases/logic_jigsaw.dart';
-export 'catalog/usecases/logic_yahtzee.dart';
+export 'catalog/usecases/logic_sorting_visualizer.dart';

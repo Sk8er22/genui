@@ -77,6 +77,7 @@ import 'usecases/logic_rps.dart' as LogicRps;
 import 'usecases/logic_simon.dart' as LogicSimon;
 import 'usecases/logic_snakes_ladders.dart' as LogicSnakesLadders;
 import 'usecases/logic_sokoban.dart' as LogicSokoban;
+import 'usecases/logic_sorting_visualizer.dart' as LogicSortingVisualizer;
 import 'usecases/logic_stopwatch.dart' as LogicStopwatch;
 import 'usecases/logic_sudoku.dart' as LogicSudoku;
 import 'usecases/logic_tarot.dart' as LogicTarot;
@@ -267,6 +268,7 @@ abstract final class BasicCatalogItems {
     LogicCheckers.LogicCheckers.catalogItem,
     LogicJigsaw.LogicJigsaw.catalogItem,
     LogicYahtzee.LogicYahtzee.catalogItem,
+    LogicSortingVisualizer.LogicSortingVisualizer.catalogItem,
   ];
 
   static Catalog asCatalog({List<String> systemPromptFragments = const []}) {
