@@ -41,6 +41,7 @@ import 'usecases/logic_countdown.dart' as LogicCountdown;
 import 'usecases/logic_currency.dart' as LogicCurrency;
 import 'usecases/logic_eight_queens.dart' as LogicEightQueens;
 import 'usecases/logic_dice.dart' as LogicDice;
+import 'usecases/logic_expense_tracker.dart' as LogicExpenseTracker;
 import 'usecases/logic_fifteen_puzzle.dart' as LogicFifteenPuzzle;
 import 'usecases/logic_flashcards.dart' as LogicFlashcards;
 import 'usecases/logic_fraction_pizza.dart' as LogicFractionPizza;
@@ -211,6 +212,7 @@ abstract final class BasicCatalogItems {
     LogicCurrency.LogicCurrency.catalogItem,
     LogicEightQueens.LogicEightQueens.catalogItem,
     LogicDice.LogicDice.catalogItem,
+    LogicExpenseTracker.LogicExpenseTracker.catalogItem,
     LogicFlashcards.LogicFlashcards.catalogItem,
     LogicFifteenPuzzle.LogicFifteenPuzzle.catalogItem,
     LogicFractionPizza.LogicFractionPizza.catalogItem,

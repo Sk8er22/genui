@@ -12,6 +12,8 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../lib/src/catalog/usecases/logic_2048.dart' as g2048;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_reversi.dart' as reversi;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_expense_tracker.dart' as expenses;
 
 Future<void> pumpSized(WidgetTester tester, Widget child) async {
   await tester.pumpWidget(MaterialApp(
@@ -36,6 +38,44 @@ void main() {
     await pumpSized(tester, reversi.LogicReversiWidget(title: 'o'));
     await tester.pump();
     await tester.pump();
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('expense tracker adds entries and updates the total',
+      (tester) async {
+    await pumpSized(tester, expenses.LogicExpenseTrackerWidget(
+        title: 'Trip', currency: 'USD'));
+    await tester.pumpAndSettle();
+
+    // Rejects empty/invalid input without crashing.
+    await tester.tap(find.byIcon(Icons.add_circle_outline));
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+
+    // Add two entries: $12.50 + $7.00 = $19.50.
+    await tester.enterText(find.byType(TextField).first, 'Lunch');
+    await tester.enterText(find.byType(TextField).last, '12.50');
+    await tester.tap(find.byIcon(Icons.add_circle_outline));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField).first, 'Taxi');
+    await tester.enterText(find.byType(TextField).last, '7');
+    await tester.tap(find.byIcon(Icons.add_circle_outline));
+    await tester.pumpAndSettle();
+
+    expect(find.text(r'$19.50'), findsOneWidget);
+    expect(find.text('Lunch'), findsOneWidget);
+    expect(find.text('Taxi'), findsOneWidget);
+
+    // Deleting the first entry leaves $7.00 (once as the entry, once as total).
+    await tester.tap(find.byIcon(Icons.delete_outline).first);
+    await tester.pumpAndSettle();
+    expect(find.text(r'$7.00'), findsNWidgets(2));
+
+    // Clearing resets the ledger.
+    await tester.tap(find.text('Clear all'));
+    await tester.pumpAndSettle();
+    expect(find.text(r'$0.00'), findsOneWidget);
+    expect(find.text('No entries yet.'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

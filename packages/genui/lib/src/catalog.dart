@@ -45,6 +45,7 @@ export 'catalog/usecases/logic_stopwatch.dart';
 export 'catalog/usecases/logic_countdown.dart';
 export 'catalog/usecases/logic_color_picker.dart';
 export 'catalog/usecases/logic_dice.dart';
+export 'catalog/usecases/logic_expense_tracker.dart';
 export 'catalog/usecases/logic_memory_game.dart';
 export 'catalog/usecases/logic_rps.dart';
 export 'catalog/usecases/logic_guess_number.dart';
