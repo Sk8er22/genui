@@ -19,6 +19,8 @@ import '../../lib/src/catalog/usecases/logic_calendar.dart' as calendar;
 import '../../lib/src/catalog/usecases/logic_snake.dart' as snake;
 // ignore: avoid_relative_lib_imports
 import '../../lib/src/catalog/usecases/logic_poker.dart' as poker;
+// ignore: avoid_relative_lib_imports
+import '../../lib/src/catalog/usecases/logic_roulette.dart' as roulette;
 
 void main() {
   group('LogicChess catalog registration', () {
@@ -158,6 +160,21 @@ void main() {
     });
   });
 
+  group('LogicRoulette catalog registration', () {
+    test('name is LogicRoulette and has a schema', () {
+      final item = roulette.LogicRoulette.catalogItem;
+      expect(item.name, 'LogicRoulette');
+      expect(item.dataSchema, isA<Schema>());
+    });
+
+    test('example JSON parses and includes a root component', () {
+      final String json =
+          roulette.LogicRoulette.catalogItem.exampleData.first();
+      expect(json, contains('LogicRoulette'));
+      expect(json, contains('root'));
+    });
+  });
+
   // Verify all exported usecase catalog items are reachable via the barrel.
   test('barrel exports logic chess widget type', () {
     // compile-time: ensures lib/src/catalog.dart re-export resolves
@@ -167,5 +184,7 @@ void main() {
     snake.LogicSnake.catalogItem;
     // ignore: unnecessary_statements
     poker.LogicPoker.catalogItem;
+    // ignore: unnecessary_statements
+    roulette.LogicRoulette.catalogItem;
   });
 }

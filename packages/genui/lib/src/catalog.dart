@@ -50,6 +50,7 @@ export 'catalog/usecases/logic_dice.dart';
 export 'catalog/usecases/logic_expense_tracker.dart';
 export 'catalog/usecases/logic_memory_game.dart';
 export 'catalog/usecases/logic_rps.dart';
+export 'catalog/usecases/logic_roulette.dart';
 export 'catalog/usecases/logic_guess_number.dart';
 export 'catalog/usecases/logic_lights_out.dart';
 export 'catalog/usecases/logic_maze.dart';

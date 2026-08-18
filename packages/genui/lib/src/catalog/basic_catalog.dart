@@ -78,6 +78,7 @@ import 'usecases/logic_pomodoro.dart' as LogicPomodoro;
 import 'usecases/logic_quiz_card.dart' as LogicQuizCard;
 import 'usecases/logic_reaction_time.dart' as LogicReactionTime;
 import 'usecases/logic_reversi.dart' as LogicReversi;
+import 'usecases/logic_roulette.dart' as LogicRoulette;
 import 'usecases/logic_rps.dart' as LogicRps;
 import 'usecases/logic_simon.dart' as LogicSimon;
 import 'usecases/logic_snakes_ladders.dart' as LogicSnakesLadders;
@@ -249,6 +250,7 @@ abstract final class BasicCatalogItems {
     LogicQuizCard.LogicQuizCard.catalogItem,
     LogicReactionTime.LogicReactionTime.catalogItem,
     LogicReversi.LogicReversi.catalogItem,
+    LogicRoulette.LogicRoulette.catalogItem,
     LogicRps.LogicRps.catalogItem,
     LogicSimon.LogicSimon.catalogItem,
     LogicSnakesLadders.LogicSnakesLadders.catalogItem,
