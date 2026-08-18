@@ -107,6 +107,9 @@ class _LogicCalculatorWidgetState extends State<LogicCalculatorWidget> {
         ops.add('(');
       } else if (t == ')') {
         while (ops.isNotEmpty && ops.last != '(') {
+          // Degenerate input (e.g. unbalanced/repeated operators) can leave
+          // fewer than two operands; collapse to 'Error' instead of crashing.
+          if (values.length < 2) return null;
           final double b = values.removeLast();
           final double a = values.removeLast();
           values.add(apply(ops.removeLast(), a, b));
@@ -115,6 +118,8 @@ class _LogicCalculatorWidgetState extends State<LogicCalculatorWidget> {
       } else if (_isOp(t)) {
         while (ops.isNotEmpty && ops.last != '(' &&
             prec(ops.last) >= prec(t)) {
+          // Same guard: '5 + + 3' must show 'Error', not throw StateError.
+          if (values.length < 2) return null;
           final double b = values.removeLast();
           final double a = values.removeLast();
           values.add(apply(ops.removeLast(), a, b));
