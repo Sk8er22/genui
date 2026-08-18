@@ -48,6 +48,7 @@ export 'catalog/usecases/logic_memory_game.dart';
 export 'catalog/usecases/logic_rps.dart';
 export 'catalog/usecases/logic_guess_number.dart';
 export 'catalog/usecases/logic_lights_out.dart';
+export 'catalog/usecases/logic_maze.dart';
 export 'catalog/usecases/logic_unit_converter.dart';
 export 'catalog/usecases/logic_wordle.dart';
 export 'catalog/usecases/logic_hangman.dart';

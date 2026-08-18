@@ -50,6 +50,7 @@ import 'usecases/logic_handwriting.dart' as LogicHandwriting;
 import 'usecases/logic_hangman.dart' as LogicHangman;
 import 'usecases/logic_lights_out.dart' as LogicLightsOut;
 import 'usecases/logic_math_trainer.dart' as LogicMathTrainer;
+import 'usecases/logic_maze.dart' as LogicMaze;
 import 'usecases/logic_memory_game.dart' as LogicMemoryGame;
 import 'usecases/logic_minesweeper.dart' as LogicMinesweeper;
 import 'usecases/logic_morse.dart' as LogicMorse;
@@ -211,6 +212,7 @@ abstract final class BasicCatalogItems {
     LogicHangman.LogicHangman.catalogItem,
     LogicLightsOut.LogicLightsOut.catalogItem,
     LogicMathTrainer.LogicMathTrainer.catalogItem,
+    LogicMaze.LogicMaze.catalogItem,
     LogicMemoryGame.LogicMemoryGame.catalogItem,
     LogicMinesweeper.LogicMinesweeper.catalogItem,
     LogicMorse.LogicMorse.catalogItem,
