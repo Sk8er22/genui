@@ -28,6 +28,7 @@ import 'usecases/logic_2048.dart' as Logic2048;
 import 'usecases/logic_anagram.dart' as LogicAnagram;
 import 'usecases/logic_battleship.dart' as LogicBattleship;
 import 'usecases/logic_birth_chart.dart' as LogicBirthChart;
+import 'usecases/logic_blackjack.dart' as LogicBlackjack;
 import 'usecases/logic_bmi.dart' as LogicBmi;
 import 'usecases/logic_calculator.dart' as LogicCalculator;
 import 'usecases/logic_chess.dart' as LogicChess;
@@ -190,6 +191,7 @@ abstract final class BasicCatalogItems {
     LogicAnagram.LogicAnagram.catalogItem,
     LogicBattleship.LogicBattleship.catalogItem,
     LogicBirthChart.LogicBirthChart.catalogItem,
+    LogicBlackjack.LogicBlackjack.catalogItem,
     LogicBmi.LogicBmi.catalogItem,
     LogicCalculator.LogicCalculator.catalogItem,
     LogicChess.LogicChess.catalogItem,

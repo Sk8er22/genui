@@ -33,6 +33,7 @@ export 'catalog/usecases/logic_handwriting.dart';
 export 'catalog/usecases/logic_piano.dart';
 export 'catalog/usecases/logic_tarot.dart';
 export 'catalog/usecases/logic_birth_chart.dart';
+export 'catalog/usecases/logic_blackjack.dart';
 export 'catalog/usecases/logic_tic_tac_toe.dart';
 export 'catalog/usecases/logic_calculator.dart';
 export 'catalog/usecases/logic_quiz_card.dart';
