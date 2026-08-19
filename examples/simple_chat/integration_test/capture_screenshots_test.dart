@@ -38,6 +38,8 @@ import '../../../packages/genui/lib/src/catalog/usecases/logic_yahtzee.dart' as 
 import '../../../packages/genui/lib/src/catalog/usecases/logic_jigsaw.dart' as wjigsaw;
 // ignore: avoid_relative_lib_imports
 import '../../../packages/genui/lib/src/catalog/usecases/logic_binary_converter.dart' as wbinary;
+// ignore: avoid_relative_lib_imports
+import '../../../packages/genui/lib/src/catalog/usecases/logic_app_theme.dart' as watheme;
 
 Future<void> snap(WidgetTester tester, Widget child, String name) async {
   await tester.pumpWidget(MaterialApp(
@@ -92,5 +94,9 @@ void main() {
     await snap(tester, wjigsaw.LogicJigsawWidget(title: 'Jigsaw'), 'jigsaw');
     await snap(tester, wbinary.LogicBinaryConverterWidget(title: 'Converter'),
         'binary_converter');
+    await snap(tester,
+        watheme.LogicAppThemeWidget(
+            title: 'Rebrand', proposedColorIndex: 11, proposedLogo: 'Aqua'),
+        'app_theme');
   });
 }

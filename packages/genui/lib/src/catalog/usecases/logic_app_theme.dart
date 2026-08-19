@@ -51,12 +51,12 @@ final class LogicAppTheme {
 class LogicAppThemeWidget extends StatefulWidget {
   const LogicAppThemeWidget({
     super.key,
-    required this.itemContext,
+    this.itemContext,
     this.title = 'App theme',
     this.proposedColorIndex = 7,
     this.proposedLogo = '',
   });
-  final CatalogItemContext itemContext;
+  final CatalogItemContext? itemContext;
   final String title;
   final int proposedColorIndex;
   final String proposedLogo;
@@ -84,9 +84,11 @@ class _LogicAppThemeWidgetState extends State<LogicAppThemeWidget> {
 
   void _apply() {
     setState(() => _applied = true);
-    widget.itemContext.dispatchEvent(UserActionEvent(
+    final ctx = widget.itemContext;
+    if (ctx == null) return; // standalone/test mode: no host to dispatch to
+    ctx.dispatchEvent(UserActionEvent(
       name: appThemeEventName,
-      sourceComponentId: widget.itemContext.id,
+      sourceComponentId: ctx.id,
       context: {
         appThemeColorIndexField: '$_colorIndex',
         appThemeLogoField: _logoC.text.trim(),
